@@ -1,0 +1,249 @@
+﻿syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+option csharp_namespace = "CentralControlService";
+
+package CentralControlRequest;
+
+/// <summary>
+/// 发送到服务端
+/// </summary>
+service CentralControlRequest{
+	    /// <summary>
+        /// 1. 发送数据-N640图片显示
+        /// </summary>
+        rpc SendN640PicShow(Request1) returns (google.protobuf.Empty);
+
+        /// <summary>
+        /// 2. 发送数据-N640截图操作
+        /// </summary>
+        rpc SendN640ScreenShot(Request1) returns (google.protobuf.Empty);
+
+        /// <summary>
+        /// 3. 信号源切换
+        /// </summary>
+        /// <param name="cmdInput">输入源</param>
+        /// <param name="cmdOutput">输出源</param>
+        rpc SendSignalSwitch(Request3) returns (google.protobuf.Empty);
+
+        /// <summary>
+        /// 4. 获取分辨率
+        /// </summary>
+        /// <param name="src">信号源选择 01-HDMI1 02-HDMI1 03-HDMI1 04-HDMI1 </param>
+        rpc SendResolution(Request1) returns (google.protobuf.Empty);
+
+        /// <summary>
+        /// 5. HDMI口是否存在信号查询
+        /// </summary>
+        /// <param name="src">信号源选择 01-HDMI1 02-HDMI1 03-HDMI1 04-HDMI1 </param>
+        rpc SendCheckSignal(Request1) returns (google.protobuf.Empty);
+
+        /// <summary>
+        /// 6. 发送心跳包
+        /// </summary>
+        rpc SendHeartBeatData(google.protobuf.Empty) returns (google.protobuf.Empty);
+
+        /// <summary>
+        /// 7. 发送屏幕（背光）亮灭控制
+        /// </summary>
+        /// <param name="isBright">是否亮屏 true-亮 false-灭</param>
+        rpc SendScreenBrightOut(Request2) returns (google.protobuf.Empty);
+
+        /// <summary>
+        /// 8. 发送WIFI启用、禁用控制
+        /// </summary>
+        /// <param name="isEnable">是否启用 0x01-启用 0x02-关闭</param>
+        rpc SendWIFICtrl(Request2) returns (google.protobuf.Empty);
+
+        /// <summary>
+        /// 9. 回复-通知应用关闭电脑控制
+        /// </summary>
+        /// <param name="shutDownType">关机类型：假关机、断电关机</param>
+        /// <param name="isSuccessed">是否成功 0x01-成功 0x02-失败</param>
+        rpc RespNoticeAppShutdown(Request3) returns (google.protobuf.Empty);
+
+        /// <summary>
+        /// 10. 发送功放板音量调节
+        /// </summary>
+        /// <param name="volumeValue">音量值（0-100）</param>
+        rpc SendPowerAmplifierVolumeCtrl(Request1) returns (google.protobuf.Empty);
+
+        /// <summary>
+        /// 11. 发送功放板模式调节
+        /// </summary>
+        /// <param name="mode">音效模式</param>
+        rpc SendPowerAmplifierModeCtrl(Request1) returns (google.protobuf.Empty);
+
+        /// <summary>
+        /// 12. 回复提笔和放笔的上报
+        /// </summary>
+        /// <param name="cmdParam"></param>
+        /// <param name="isSuccessed"></param>
+        rpc RespTakePutPenReport(Request3) returns (google.protobuf.Empty);
+
+        /// <summary>
+        /// 13. 发送-功放板音量查询
+        /// </summary>
+        rpc SendPowerAmplifierVolumeQuery(google.protobuf.Empty) returns (google.protobuf.Empty);
+
+        /// <summary>
+        /// 14. 发送-功放板音效查询
+        /// </summary>
+        rpc SendPowerAmplifierModeQuery(google.protobuf.Empty) returns (google.protobuf.Empty);
+
+        /// <summary>
+        /// 15. 配置中控串口
+        /// </summary>
+        /// <param name="channel">串口通道</param>
+        /// <param name="datab">数据位</param>
+        /// <param name="dpaity">校验位</param>
+        /// <param name="stopb1">停止位1</param>
+        /// <param name="stopb2">停止位2</param>
+        /// <param name="baudr">波特率</param>
+        rpc SendConfigSerialPort(Request4) returns (google.protobuf.Empty);
+
+        /// <summary>
+        /// 16. 串口发送
+        /// </summary>
+        /// <param name="channel">串口通道</param>
+        /// <param name="senddata">串口发送数据</param>
+        rpc SerialSend(Request3) returns (google.protobuf.Empty);
+
+        /// <summary>
+        /// 17. 串口接收完成回复
+        /// </summary>
+        /// <param name="channel">串口通道</param>
+        /// <param name="isSuccessed">是否接收成功</param>
+        rpc RespSerialReceive(Request3) returns (google.protobuf.Empty);
+
+        /// <summary>
+        /// 18. 回复IO触发
+        /// </summary>
+        /// <param name="channel">IO触发通道</param>
+        /// <param name="level">高低电平 0x01-高电平 0x02-低电平</param>
+        /// <param name="isSucessed">是否成功 0x01-成功 0x02-失败</param>
+        rpc RespUPIO(Request5) returns (google.protobuf.Empty);
+
+        /// <summary>
+        /// 19. 使能继电器
+        /// </summary>
+        /// <param name="channel">继电器通道</param>
+        /// <param name="isEnable">继电器开关 0x01-开启 0x02-关闭</param>
+        rpc CtrlRelay(Request3) returns (google.protobuf.Empty);
+
+        /// <summary>
+        /// 20. 开启红外学习
+        /// </summary>
+        rpc StartInfraredLearn(google.protobuf.Empty) returns (google.protobuf.Empty);
+
+        /// <summary>
+        /// 21. 发送红外数据
+        /// </summary>
+        /// <param name="index">红外索引号</param>
+        /// <param name="infrareddata">红外数据</param>
+        rpc SendInfraredData(Request3) returns (google.protobuf.Empty);
+
+        /// <summary>
+        /// 22. 回复红外接收数据
+        /// </summary>
+        /// <param name="index">红外索引号</param>
+        /// <param name="isSucessed">是否成功 0x01-成功 0x02-失败</param>
+        rpc RespInfraredData(Request3) returns (google.protobuf.Empty);
+
+        /// <summary>
+        /// 23. 光照强度
+        /// </summary>
+        /// <param name="isSuccessed">是否接收成功</param>
+        rpc RespLightIntensity(Request1) returns (google.protobuf.Empty);
+
+        /// <summary>
+        /// 24. 温湿度
+        /// </summary>
+        /// <param name="isSuccessed">是否接收成功</param>
+        rpc RespHumitureData(Request1) returns (google.protobuf.Empty);
+
+        /// <summary>
+        /// 25. 人体传感器
+        /// </summary>
+        /// <param name="isSuccessed">是否接收成功</param>
+        rpc RespBodySensor(Request1) returns (google.protobuf.Empty);
+
+        /// <summary>
+        /// 26. 发送触摸HID数据
+        /// </summary>
+        rpc SendTouchHIDData(Request1) returns (google.protobuf.Empty);
+
+        /// <summary>
+        /// 27. 发送-中控状态查询
+        /// </summary>
+        rpc SendStatusQuery(google.protobuf.Empty) returns (google.protobuf.Empty);
+
+        /// <summary>
+        /// 28. 发送-设置中控状态
+        /// </summary>
+        /// <param name="status"></param>
+        rpc SendSetCtCtrlStatus(Request1) returns (google.protobuf.Empty);
+
+        /// <summary>
+        /// 29. 发送设置音源输出
+        /// </summary>
+        /// <param name="src"></param>
+        rpc SendSetSoundSrc(Request1) returns (google.protobuf.Empty);
+
+        /// <summary>
+        /// 30. 发送-输入设备音量调节
+        /// </summary>
+        /// <param name="devType"></param>
+        /// <param name="value"></param>
+        rpc SendSetDevInVolume(Request3) returns (google.protobuf.Empty);
+
+        /// <summary>
+        /// 31. 发送-打开中控串口通讯
+        /// </summary>
+        rpc SendOpenCentralControlComm(google.protobuf.Empty) returns (google.protobuf.Empty);
+
+        /// <summary>
+        /// 32. 发送-关闭中控串口通讯
+        /// </summary>
+        rpc SendCloseCentralControlComm(google.protobuf.Empty) returns (google.protobuf.Empty);
+
+        /// <summary>
+        /// 33. 发送-重启中控串口通讯
+        /// </summary>
+        rpc SendResumeCentralControlComm(google.protobuf.Empty) returns (google.protobuf.Empty);
+
+        /// <summary>
+        /// 34. 发送-询问是否在连接中控
+        /// </summary>
+        rpc SendIsLinkingCentralControl(google.protobuf.Empty) returns (google.protobuf.Empty);
+
+}
+
+message Request1{
+    string s1 = 1;
+}
+
+message Request2{
+    bool b1 = 1;
+}
+
+message Request3{
+    string s1 = 1;
+    string s2 = 2;
+}
+
+message Request4{
+    string s1 = 1;
+    string s2 = 2;
+    string s3 = 3;
+    string s4 = 4;
+    string s5 = 5;
+    string s6 = 6;
+}
+
+message Request5{
+    string s1 = 1;
+    string s2 = 2;
+    string s3 = 3;
+}

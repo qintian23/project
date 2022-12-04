@@ -1,0 +1,165 @@
+﻿syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+option csharp_namespace = "CentralControlService";
+
+package CentralControlResponse;
+
+/// <summary>
+/// 发送给客户端 
+/// </summary>
+service CentralControlResponse{
+
+    /// <summary>
+    /// 1. 心跳-中控响应
+    /// </summary>
+	rpc HeartBeatResp(google.protobuf.Empty) returns (Response1);
+
+    /// <summary>
+    /// 2. 屏幕（背光）亮灭控制-中控响应
+    /// </summary>
+	rpc ScreenBrightOutResp(google.protobuf.Empty) returns (Response5);
+
+    /// <summary>
+    /// 3. WIFI启用、禁用控制-中控响应
+    /// </summary>
+	rpc WIFICtrlResp(google.protobuf.Empty) returns (Response5);
+
+    /// <summary>
+    /// 4. 通知应用关闭电脑控制-中控上报
+    /// </summary>
+	rpc NoticeAppShutdownReport(google.protobuf.Empty) returns (Response3);
+
+	/// <summary>
+    /// 5. 功放板音量调节-中控响应
+    /// </summary>
+    rpc PowerAmplifierVolumeCtrlResp(google.protobuf.Empty) returns (Response1);
+
+    /// <summary>
+    /// 6. 功放板模式调节-中控响应
+    /// </summary>
+    rpc PowerAmplifierModeCtrlResp(google.protobuf.Empty) returns (Response1);
+
+    /// <summary>
+    /// 7. 提笔和放笔的上报-中控上报
+    /// </summary>
+    rpc TakePutPenReport(google.protobuf.Empty) returns (Response3);
+
+    /// <summary>
+    /// 8. 光照强度-中控上报
+    /// </summary>
+    rpc LightIntensityReport(google.protobuf.Empty) returns (Response3);
+
+    /// <summary>
+    /// 9. 温湿度-中控上报
+    /// </summary>
+    rpc HumitureDataReport(google.protobuf.Empty) returns (Response2);
+
+    /// <summary>
+    /// 10. 人体传感器-中控上报
+    /// </summary>
+    rpc BodySensorReport(google.protobuf.Empty) returns (Response1);
+
+    /// <summary>
+    /// 11. N640图片显示-中控响应
+    /// </summary>
+    rpc N640PicShowResp(google.protobuf.Empty) returns (Response5);
+
+    /// <summary>
+    /// 12. N640截图操作-中控响应
+    /// </summary>
+    rpc N640ScreenShotResp(google.protobuf.Empty) returns (Response5);
+
+    /// <summary>
+    /// 13. 信号源切换-中控响应
+    /// </summary>
+    rpc SignalSwitchResp(google.protobuf.Empty) returns (Response4);
+
+    /// <summary>
+    /// 14. 分辨率-中控响应
+    /// </summary>
+    rpc ResolutionResp(google.protobuf.Empty) returns (Response2);
+
+    /// <summary>
+    /// 15. 是否有信号-中控响应事件
+    /// </summary>
+    rpc HasSignalResp(google.protobuf.Empty) returns (Response2);
+
+    /// <summary>
+    /// 16. 功放板音量查询-中控响应事件
+    /// </summary>
+    rpc PowerAmplifierVolumeQueryResp(google.protobuf.Empty) returns (Response5);
+
+    /// <summary>
+    /// 17. 功放板音效查询-中控响应事件
+    /// </summary>
+    rpc PowerAmplifierModeQueryResp(google.protobuf.Empty) returns (Response5);
+
+    /// <summary>
+    /// 18. 中控状态查询-回复-事件
+    /// </summary>
+    rpc StatusQueryResp(google.protobuf.Empty) returns (Response3);
+
+    /// <summary>
+    /// 19. 设置中控状态-回复-事件
+    /// </summary>
+    rpc SetCtCtrlStatusResp(google.protobuf.Empty) returns (Response5);
+
+    /// <summary>
+    /// 20. 功放输出控制（音源输出设置）-回复-事件
+    /// </summary>
+    rpc RespSetSoundSrc(google.protobuf.Empty) returns (Response5);
+
+    /// <summary>
+    /// 21. 输入设备音量调节-回复-事件
+    /// </summary>
+    rpc RespSetDevInVolume(google.protobuf.Empty) returns (Response4);
+
+    /// <summary>
+    /// 22. 串口触摸数据（已处理）
+    /// </summary>
+    rpc TouchData(google.protobuf.Empty) returns (stream Response7);
+
+    /// <summary>
+    /// 23. 串口触摸点数
+    /// </summary>
+    rpc TouchPointNumber(google.protobuf.Empty) returns (stream Response6);
+}
+
+message Response1{
+	bool b1 = 1;
+}
+
+message Response2{
+	string t1 = 1;
+	string t2 = 2;
+}
+
+message Response3{
+    string t1 = 1;
+}
+
+message Response4{
+    string t1 = 1;
+	string t2 = 2;
+    bool b1 = 3;
+}
+
+message Response5{
+    string t1 = 1;
+    bool b1 = 2;
+}
+
+message Response6{
+    int32 i1 = 1;
+}
+
+message Response7{
+    string id = 1;
+    string type = 2;
+    int32 xPoint = 3;
+    int32 yPoint = 4;
+    int32 width = 5;
+    int32 height = 6;
+}

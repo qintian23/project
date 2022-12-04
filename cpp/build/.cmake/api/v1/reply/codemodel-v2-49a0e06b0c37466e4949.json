@@ -1,0 +1,133 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-e1a4573960bf55c1acf0.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5.1"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "CentralControlClient",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "CentralControlClient::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-CentralControlClient-Debug-08baa8f9df6afb1b9c87.json",
+					"name" : "CentralControlClient",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "CentralControlClient_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-CentralControlClient_autogen-Debug-0821e7aba4a8479ccddb.json",
+					"name" : "CentralControlClient_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "CentralControlClient_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-CentralControlClient_autogen_timestamp_deps-Debug-cce0a96f43cf3eb51b2c.json",
+					"name" : "CentralControlClient_autogen_timestamp_deps",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cp_grpc_proto::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cp_grpc_proto-Debug-e5c5b72a9295258c8f7e.json",
+					"name" : "cp_grpc_proto",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cp_grpc_proto_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cp_grpc_proto_autogen-Debug-0af621a41a978f75c72a.json",
+					"name" : "cp_grpc_proto_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cp_grpc_proto_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cp_grpc_proto_autogen_timestamp_deps-Debug-ae145d1cd55407d441ba.json",
+					"name" : "cp_grpc_proto_autogen_timestamp_deps",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cq_grpc_proto::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cq_grpc_proto-Debug-33de839959394f65e79d.json",
+					"name" : "cq_grpc_proto",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cq_grpc_proto_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cq_grpc_proto_autogen-Debug-c85509cee387a2aecad0.json",
+					"name" : "cq_grpc_proto_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cq_grpc_proto_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cq_grpc_proto_autogen_timestamp_deps-Debug-746bdb74c2e0ca396571.json",
+					"name" : "cq_grpc_proto_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/zhulc/\u684c\u9762/project/cpp/build",
+		"source" : "/home/zhulc/\u684c\u9762/project/cpp/CentralControlClient"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}
