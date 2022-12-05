@@ -2,19 +2,23 @@
 #define CLIENTREQUEST_H
 
 #include "stdafx.h"
-
-#include "../build/CentralControlRequest.grpc.pb.h"
+#include "IClientBase.h"
+#include "../../build/CentralControlRequest.grpc.pb.h"
 
 namespace ClientBase
 {
-    class CentralControlRequestImpl
+    class CentralControlRequestImpl : public IRequestBase
     {
     public:
         CentralControlRequestImpl(std::shared_ptr<grpc::Channel> channel) :
             stub_(CentralControlRequest::CentralControlRequest::NewStub(channel)){}
 
+        void SendN640PicShow(byte &cmdParam);
+        void SendHeartBeatData();
+
     private:
         std::unique_ptr<CentralControlRequest::CentralControlRequest::Stub> stub_;
+        void ShowMessage(std::string msg, bool ok);
     };
 }
 

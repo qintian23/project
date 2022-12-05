@@ -2,16 +2,17 @@
 #define CLIENTRESPONSE_H
 
 #include "stdafx.h"
-
-#include "../build/CentralControlResponse.grpc.pb.h"
+#include "IClientBase.h"
+#include "../../build/CentralControlResponse.grpc.pb.h"
 
 namespace ClientBase
 {
-    class CentralControlResponseImpl
+    class CentralControlResponseImpl : IResponseBase
     {
     public:
         CentralControlResponseImpl(std::shared_ptr<grpc::Channel> channel) :
             stub_(CentralControlResponse::CentralControlResponse::NewStub(channel)){}
+
 
     private:
         std::unique_ptr<CentralControlResponse::CentralControlResponse::Stub> stub_;
