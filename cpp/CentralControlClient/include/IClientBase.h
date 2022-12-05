@@ -26,6 +26,11 @@ namespace  ClientBase
         /// 1. 心跳-中控响应
         /// </summary>
         virtual bool HeartBeatResp() = 0;
+
+        /// <summary>
+        /// 13. 信号源切换-中控响应
+        /// </summary>
+        virtual void SignalSwitchResp(byte* cmdInput, byte* cmdOutput, bool* isSuccessed) = 0;
     };
 
 }

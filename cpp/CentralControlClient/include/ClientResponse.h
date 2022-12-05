@@ -13,9 +13,12 @@ namespace ClientBase
         CentralControlResponseImpl(std::shared_ptr<grpc::Channel> channel) :
             stub_(CentralControlResponse::CentralControlResponse::NewStub(channel)){}
 
+        bool HeartBeatResp();
+        void SignalSwitchResp(byte* cmdInput, byte* cmdOutput, bool* isSuccessed);
 
     private:
         std::unique_ptr<CentralControlResponse::CentralControlResponse::Stub> stub_;
+        void ShowMessage(grpc::Status statu, std::string interface);
     };
 }
 

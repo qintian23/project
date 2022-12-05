@@ -8,3 +8,14 @@
 2. cmake
 3. nasm
 4. .net 6
+
+
+### 1.1 VSCode编译
+```
+huangjk@huangjk-Default-string:~/桌面/project/build$ cmake ../cpp/CentralControlClient/
+huangjk@huangjk-Default-string:~/桌面/project/build$ ninja
+```
+
+# linux 权限 密码：
+
+hjk5417553

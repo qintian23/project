@@ -18,7 +18,7 @@ namespace ClientBase
 
     private:
         std::unique_ptr<CentralControlRequest::CentralControlRequest::Stub> stub_;
-        void ShowMessage(std::string msg, bool ok);
+        void ShowMessage(grpc::Status statu, std::string interface);
     };
 }
 
