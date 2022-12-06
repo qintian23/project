@@ -25,7 +25,8 @@ namespace CentralControl
     void CentralControlRequestImpl::SendN640PicShow(byte &cmdParam) 
     {
         CentralControlRequest::Request1 request = CentralControlRequest::Request1();
-        request.set_s1(cmdParam);
+        std::string tmpCmdParam = std::to_string(cmdParam);
+        request.set_s1(tmpCmdParam);
         google::protobuf::Empty reply;
         grpc::ClientContext context;
         grpc::Status statu = stub_->SendN640PicShow(&context, request, &reply);

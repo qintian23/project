@@ -52,8 +52,30 @@ add_custom_command(
           "${cp_proto}"
         DEPENDS "${cp_proto}")
 
+macro(FIND_INCLUDE_DIR result curdir)
+  file(GLOB_RECURSE children "${curdir}/*.h" "${curdir}//*.hpp")
+  message(STATUS "children = ${children}")
+  set(dirlist "")
+  foreach(child ${children})
+    string(REGEX REPLACE "(.*)/.*" "\\1" LIB_NAME ${child})
+    if(IS_DIRECTORY ${LIB_NAME})
+      if(dirlist MATCHES ${LIB_NAME})
+      else()
+        message(STATUS "current platform: Linux")
+        LIST(APPEND dirlist ${LIB_NAME})
+      endif()
+    endif()
+  endforeach()
+  set(${result} ${dirlist})
+endmacro()
+
+FIND_INCLUDE_DIR(INCLUDE_DIR_LIST ${PROJECT_SOURCE_DIR}/include)
+
+file(GLOB_RECURSE SRC_DIR_LIST "src/*.cpp")
+message(STATUS "SRC_DIR_LIST = ${SRC_DIR_LIST}")
+
 # Include generated *.pb.h files
-include_directories("${CMAKE_CURRENT_BINARY_DIR}")
+include_directories("${CMAKE_CURRENT_BINARY_DIR}" "${INCLUDE_DIR_LIST}")
 
 # cq_grpc_proto
 add_library(cq_grpc_proto
@@ -75,6 +97,15 @@ target_link_libraries(cp_grpc_proto
   ${_GRPC_GRPCPP}
   ${_PROTOBUF_LIBPROTOBUF})
 
+add_library(CentralControl
+    ${INCLUDE_DIR_LIST}
+    ${SRC_DIR_LIST}
+)
+target_link_libraries(CentralControl
+  cq_grpc_proto
+  cp_grpc_proto
+)
+
 add_executable(CentralControlClient
   main.cpp
 )
@@ -82,6 +113,7 @@ target_link_libraries(CentralControlClient
     Qt${QT_VERSION_MAJOR}::Core
     cq_grpc_proto
     cp_grpc_proto
+    CentralControl
     ${_REFLECTION}
     ${_GRPC_GRPCPP}
     ${_PROTOBUF_LIBPROTOBUF})

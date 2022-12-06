@@ -18,7 +18,7 @@ namespace CentralControl
         CentralControlRequestImpl(std::shared_ptr<grpc::Channel> channel) :
             stub_(CentralControlRequest::CentralControlRequest::NewStub(channel)){}
 
-        ~CentralControlRequestImpl();
+        // ~CentralControlRequestImpl();
 
         void NewClient(std::string url);
 
