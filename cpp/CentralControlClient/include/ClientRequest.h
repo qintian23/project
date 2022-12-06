@@ -12,9 +12,15 @@ namespace ClientBase
     public:
         /// @brief 默认构造函数
         CentralControlRequestImpl();
-        
+
+        /// @brief 通过channel初始化client
+        /// @param channel 
         CentralControlRequestImpl(std::shared_ptr<grpc::Channel> channel) :
             stub_(CentralControlRequest::CentralControlRequest::NewStub(channel)){}
+
+        ~CentralControlRequestImpl();
+
+        void NewClient(std::string url);
 
         void SendN640PicShow(byte &cmdParam);
         void SendHeartBeatData();

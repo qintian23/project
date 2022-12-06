@@ -2,6 +2,26 @@
 
 namespace ClientBase
 {
+
+    CentralControlResponseImpl::CentralControlResponseImpl()
+    {
+        std::shared_ptr<grpc::Channel> channel = grpc::CreateChannel(URL, grpc::InsecureChannelCredentials());
+        stub_ = CentralControlResponse::CentralControlResponse::NewStub(channel);
+    }
+
+    void CentralControlResponseImpl::NewClient(std::string url)
+    {
+        std::shared_ptr<grpc::Channel> channel = grpc::CreateChannel(url, grpc::InsecureChannelCredentials());
+        std::unique_ptr<CentralControlResponse::CentralControlResponse::Stub> tmpStub = CentralControlResponse::CentralControlResponse::NewStub(channel);
+        if(stub_ == tmpStub)
+        {
+            // tmpStub.release();
+            return;
+        }
+        stub_.swap(tmpStub); 
+        tmpStub.release();
+    }
+
     bool CentralControlResponseImpl::HeartBeatResp()
     {
         grpc::ClientContext context;

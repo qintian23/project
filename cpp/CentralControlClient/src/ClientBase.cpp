@@ -5,8 +5,8 @@ namespace ClientBase
     ClientImpl::ClientImpl(int argc, char **argv)
     {
         std::string target_str = GetTargetStr(argc, argv);
-        RequestClient = CentralControlRequestImpl(grpc::CreateChannel(target_str, grpc::InsecureChannelCredentials()));
-        ResponseClient = CentralControlResponseImpl(grpc::CreateChannel(target_str, grpc::InsecureChannelCredentials()));
+        RequestClient.NewClient(target_str);
+        ResponseClient.NewClient(target_str);
     }
 
     std::string ClientImpl::GetTargetStr(int argc, char **argv)

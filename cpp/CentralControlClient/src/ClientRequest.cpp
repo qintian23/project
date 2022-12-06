@@ -2,6 +2,26 @@
 
 namespace ClientBase
 {
+
+    CentralControlRequestImpl::CentralControlRequestImpl()
+    {
+        std::shared_ptr<grpc::Channel> channel = grpc::CreateChannel(URL, grpc::InsecureChannelCredentials());
+        stub_ = CentralControlRequest::CentralControlRequest::NewStub(channel);
+    }
+
+    void CentralControlRequestImpl::NewClient(std::string url)
+    {
+        std::shared_ptr<grpc::Channel> channel = grpc::CreateChannel(url, grpc::InsecureChannelCredentials());
+        std::unique_ptr<CentralControlRequest::CentralControlRequest::Stub> tmpStub = CentralControlRequest::CentralControlRequest::NewStub(channel);
+        if(stub_ == tmpStub)
+        {
+            // tmpStub.release();
+            return;
+        }
+        stub_.swap(tmpStub); 
+        tmpStub.release(); // 释放对CentralControlRequest的stub的控制权，并将其指向的对象置为空
+    }
+
     void CentralControlRequestImpl::SendN640PicShow(byte &cmdParam) 
     {
         CentralControlRequest::Request1 request = CentralControlRequest::Request1();
