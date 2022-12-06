@@ -6,4 +6,6 @@
 #include <string>
 #include <grpcpp/grpcpp.h>
 
+#define URL "localhost:7007"
+
 #endif // STDAFX_H

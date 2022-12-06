@@ -10,6 +10,9 @@ namespace ClientBase
     class CentralControlRequestImpl : public IRequestBase
     {
     public:
+        /// @brief 默认构造函数
+        CentralControlRequestImpl();
+        
         CentralControlRequestImpl(std::shared_ptr<grpc::Channel> channel) :
             stub_(CentralControlRequest::CentralControlRequest::NewStub(channel)){}
 

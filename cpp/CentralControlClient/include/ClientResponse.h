@@ -10,6 +10,9 @@ namespace ClientBase
     class CentralControlResponseImpl : IResponseBase
     {
     public:
+        /// @brief 默认构造函数
+        CentralControlResponseImpl();
+
         CentralControlResponseImpl(std::shared_ptr<grpc::Channel> channel) :
             stub_(CentralControlResponse::CentralControlResponse::NewStub(channel)){}
 
