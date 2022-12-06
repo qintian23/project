@@ -3,7 +3,7 @@
 
 typedef unsigned char byte;
 
-namespace  ClientBase
+namespace  CentralControl
 {
     class IRequestBase
     {

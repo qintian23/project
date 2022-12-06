@@ -1,6 +1,6 @@
 #include "../include/ClientResponse.h"
 
-namespace ClientBase
+namespace CentralControl
 {
 
     CentralControlResponseImpl::CentralControlResponseImpl()

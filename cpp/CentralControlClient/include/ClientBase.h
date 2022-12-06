@@ -4,7 +4,7 @@
 #include "ClientRequest.h"
 #include "ClientResponse.h"
 
-namespace  ClientBase
+namespace  CentralControl
 {
 
     class ClientImpl

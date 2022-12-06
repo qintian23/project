@@ -1,8 +1,14 @@
-#include <QCoreApplication>
+#include "include/ClientBase.h"
 
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
-    QCoreApplication a(argc, argv);
+    CentralControl::ClientImpl centralcontrol(argc, argv);
+    // 发送心跳
+    centralcontrol.RequestClient.SendHeartBeatData();
 
-    return a.exec();
+    // 心跳状态
+    bool type = centralcontrol.ResponseClient.HeartBeatResp();
+    std::cout << type << std::endl;
+
+    return 0;
 }

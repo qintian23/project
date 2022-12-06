@@ -1,6 +1,6 @@
 #include "../include/ClientRequest.h"
 
-namespace ClientBase
+namespace CentralControl
 {
 
     CentralControlRequestImpl::CentralControlRequestImpl()

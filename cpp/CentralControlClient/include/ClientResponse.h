@@ -5,7 +5,7 @@
 #include "IClientBase.h"
 #include "../../build/CentralControlResponse.grpc.pb.h"
 
-namespace ClientBase
+namespace CentralControl
 {
     class CentralControlResponseImpl : IResponseBase
     {

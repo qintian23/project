@@ -1,6 +1,6 @@
 #include "../include/ClientBase.h"
 
-namespace ClientBase
+namespace CentralControl
 {
     ClientImpl::ClientImpl(int argc, char **argv)
     {
