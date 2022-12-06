@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+option csharp_namespace = "CentralControlService";
+
+package SimpleGrpc.Server;
+
+service FirstTest{
+	rpc SimpleRpc(GrpcParams) returns (GrpcResults);
+	rpc SimpleEmpty(GrpcParams) returns (google.protobuf.Empty);
+	rpc ClientStream(stream GrpcParams) returns (GrpcResults);
+	rpc ServerStream(GrpcParams) returns (stream GrpcResults);
+	rpc TwoWayStream(stream GrpcParams) returns (stream GrpcResults);
+}
+
+message GrpcParams{
+	int32 id = 1;
+	string name = 2;
+}
+
+message GrpcResults{
+	bool success = 1;
+	string data = 2;
+}
