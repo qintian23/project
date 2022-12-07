@@ -17,6 +17,13 @@ namespace  CentralControl
         /// 6. 发送心跳包
         /// </summary>
         virtual void SendHeartBeatData() = 0;
+
+        /// <summary>
+        /// 7. 发送屏幕（背光）亮灭控制
+        /// </summary>
+        /// <param name="isBright">是否亮屏 true-亮 false-灭</param>
+        virtual void SendScreenBrightOut(bool &isBright) = 0;
+
     };
 
     class IResponseBase
@@ -26,6 +33,11 @@ namespace  CentralControl
         /// 1. 心跳-中控响应
         /// </summary>
         virtual bool HeartBeatResp() = 0;
+
+        /// <summary>
+        /// 2. 屏幕（背光）亮灭控制-中控响应
+        /// </summary>
+        virtual void ScreenBrightOutResp(byte* cmdParam, bool* isSuccessed) = 0;
 
         /// <summary>
         /// 13. 信号源切换-中控响应

@@ -24,6 +24,7 @@ namespace CentralControl
 
         void SendN640PicShow(byte &cmdParam);
         void SendHeartBeatData();
+        void SendScreenBrightOut(bool &isBright);
 
     private:
         std::unique_ptr<CentralControlRequest::CentralControlRequest::Stub> stub_;

@@ -20,6 +20,7 @@ namespace CentralControl
 
         bool HeartBeatResp();
         void SignalSwitchResp(byte* cmdInput, byte* cmdOutput, bool* isSuccessed);
+        void ScreenBrightOutResp(byte* cmdParam, bool* isSuccessed);
 
     private:
         std::unique_ptr<CentralControlResponse::CentralControlResponse::Stub> stub_;

@@ -1,6 +1,6 @@
 # Proto file
-get_filename_component(ft_proto "../../../protos/FirstTest.proto")
-get_filename_component(ft_proto "${ft_proto}" PATH)
+get_filename_component(ft_proto "../../protos/FirstTest.proto" ABSOLUTE)
+get_filename_component(ft_proto_path "${ft_proto}" PATH)
 
 # Generated sources
 set(ft_proto_srcs "${CMAKE_CURRENT_BINARY_DIR}/FirstTest.pb.cc")
@@ -9,7 +9,7 @@ set(ft_grpc_srcs "${CMAKE_CURRENT_BINARY_DIR}/FirstTest.grpc.pb.cc")
 set(ft_grpc_hdrs "${CMAKE_CURRENT_BINARY_DIR}/FirstTest.grpc.pb.h")
 
 add_custom_command(
-    OUTPUT "${ft_proto_srcs}" "${ft_proto_hdrs}" "${ft_grpc_srcs}" "${ft_grpc_hdrs}"
+      OUTPUT "${ft_proto_srcs}" "${ft_proto_hdrs}" "${ft_grpc_srcs}" "${ft_grpc_hdrs}"
       COMMAND ${_PROTOBUF_PROTOC}
       ARGS --grpc_out "${CMAKE_CURRENT_BINARY_DIR}"
         --cpp_out "${CMAKE_CURRENT_BINARY_DIR}"

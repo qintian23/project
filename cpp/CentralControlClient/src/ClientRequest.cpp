@@ -42,6 +42,16 @@ namespace CentralControl
         ShowMessage(statu, "SendHeartBeatData");
     }
 
+    void CentralControlRequestImpl::SendScreenBrightOut(bool &isBright)
+    {
+        CentralControlRequest::Request2 request = CentralControlRequest::Request2();
+        request.set_b1(isBright);
+        google::protobuf::Empty reply;
+        grpc::ClientContext context;
+        grpc::Status statu = stub_->SendScreenBrightOut(&context, request, &reply);
+        ShowMessage(statu, "SendScreenBrightOut");
+    }
+
     void CentralControlRequestImpl::ShowMessage(grpc::Status statu, std::string interface)
     {
         if(statu.ok())
